@@ -1,0 +1,120 @@
+{% extends 'base.html' %} {% block title %} Twitter Webscraper | Get Tweets from
+Twitter {% endblock %} {% block content %}
+
+<form method="POST" action="">
+  {% csrf_token %}
+  <!-- SenderEmail Address -->
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"
+            >Start Date</label
+          >
+          <input
+            type="date"
+            name="startdate"
+            class="form-control"
+            id="exampleFormControlInput1"
+          />
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"
+            >Tweet No</label
+          >
+          <input
+            type="number"
+            name="tweetno"
+            class="form-control"
+            id="exampleFormControlInput1"
+          />
+        </div>
+      </div>
+      <div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"
+            >End Date</label
+          >
+          <input
+            type="date"
+            name="enddate"
+            class="form-control"
+            id="exampleFormControlInput1"
+          />
+        </div>
+      </div>
+      <div class="col"><div class="mb-3">
+          <label for="exampleFormControlInput1" class="form-label"
+            >Text to Search</label
+          >
+          <input
+            type="text"
+            name="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+          />
+        </div></div>
+      <div class="col"></div>
+    </div>
+  </div>
+
+  <!-- Receiver Email -->
+
+  <div class="container text-center">
+    <div class="row">
+      <div class="col"></div>
+      <div class="col text-right">
+        <input type="submit" value="Send Mail" class="btn btn-success" />
+      </div>
+      <div class="col text-right"></div>
+    </div>
+  </div>
+</form>
+<table class="table table-striped">
+  <thead>
+
+
+
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">User Name</th>
+      <th scope="col">Content</th>
+      <th scope="col">Language</th>
+      <th scope="col">URL</th>
+      <th scope="col">Source</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for i in twitter %}
+    <tr>
+      <th scope="row"></th>
+      <td>{{i.username}}</td>
+      <td>{{i.content}}</td>
+      <td>{{i.language}}</td>
+      <td>{{i.url}}</td>
+      <td>{{i.source}}</td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+
+{% endblock%}
+
+<!-- <div class="container text-center">
+    <div class="row">
+      <div class="col">
+        Column
+      </div>
+      <div class="col">
+        Column
+      </div>
+      <div class="col">
+        Column
+      </div>
+    </div>
+  </div> -->
